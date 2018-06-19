@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+
 import { ConsumerComplaintService } from '../consumer-complaint.service';
 import { ConsumerComplaint } from '../consumer-complaint';
 
