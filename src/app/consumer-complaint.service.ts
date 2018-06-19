@@ -21,7 +21,7 @@ export class ConsumerComplaintService {
   constructor(private http: HttpClient) { }
 
   getComplaints() {
-    return this.http.get(this.complaintsUrl)
+    return this.http.get<ConsumerComplaint[]>(this.complaintsUrl)
   }
 
 	private handleError<T> (operation = 'operation', result?: T) {

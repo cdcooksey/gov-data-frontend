@@ -6,9 +6,4 @@ export class ConsumerComplaint {
   timely_response: boolean;
   consumer_disputed: boolean;
   submitted_via: string;
-
-  constructor(data: any) {
-    console.log("I'm the model");
-    console.log(data);
-  }
 }

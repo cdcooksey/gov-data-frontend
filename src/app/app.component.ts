@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   private getComplaints(): void {
     this.complaintService.getComplaints()
-    .subscribe(complaints => this.complaints$ = complaints['data']);
+      .subscribe((data: ConsumerComplaint[]) => this.complaints$ = data['data']);
   }
 
 }
