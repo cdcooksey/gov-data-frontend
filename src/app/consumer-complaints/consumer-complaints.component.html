@@ -1,6 +1,15 @@
 <li *ngFor="let complaint of complaints">
-  {{ complaint.id }} 
-  {{ complaint.attributes.complaint_id }}
-  ##### 
-  {{ complaint.attributes.date_received }}
+
+  <div class="columns">
+    <div class="column">
+      {{ complaint.id }} 
+    </div>
+    <div class="column">
+      {{ complaint.attributes.complaint_id }}
+    </div>
+    <div class="column">
+      {{ complaint.attributes.date_received }}
+    </div>
+  </div>
+
 </li>
