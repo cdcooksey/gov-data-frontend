@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ConsumerComplaintService } from '../consumer-complaint.service';
+import { ConsumerComplaint } from '../consumer-complaint';
+
 @Component({
   selector: 'app-consumer-complaints',
   templateUrl: './consumer-complaints.component.html',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsumerComplaintsComponent implements OnInit {
 
-  constructor() { }
+  complaints$: Observable<ConsumerComplaint[]>;
+
+  constructor(private complaintService: ConsumerComplaintService) { }
 
   ngOnInit() {
+    this.getComplaints();
   }
+
+  private getComplaints(): void {
+    this.complaintService.getComplaints()
+      .subscribe((data: ConsumerComplaint[]) => this.complaints$ = data['data']);
+  }
+
 
 }

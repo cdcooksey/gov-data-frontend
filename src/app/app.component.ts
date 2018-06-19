@@ -1,9 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
-import { ConsumerComplaintService } from './consumer-complaint.service';
-import { ConsumerComplaint } from './consumer-complaint';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +6,6 @@ import { ConsumerComplaint } from './consumer-complaint';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
-  constructor(private complaintService: ConsumerComplaintService) { }
-
+export class AppComponent {
   title = 'Consumer complaint';
-
-  complaints$: Observable<ConsumerComplaint[]>;
-
-  ngOnInit() {
-    this.getComplaints();
-  }
-
-  private getComplaints(): void {
-    this.complaintService.getComplaints()
-      .subscribe((data: ConsumerComplaint[]) => this.complaints$ = data['data']);
-  }
-
 }
