@@ -1,4 +1,36 @@
+<div class="columns">
+  <div class="column">
+    <strong>id</strong>
+  </div>
+  <div class="column">
+    <strong>complaint ID</strong>
+  </div>
+
+  <div class="column">
+    <strong>date received</strong>
+  </div>
+
+  <div class="column">
+    <strong>date sent to company</strong>
+  </div>
+
+  <div class="column">
+    <strong>timely response</strong>
+  </div>
+
+  <div class="column">
+    <strong>consumer disputed?</strong>
+  </div>
+
+  <div class="column">
+    <strong>via</strong>
+  </div>
+
+</div>
+
+
 <li *ngFor="let complaint of complaints">
+
 
   <div class="columns">
     <div class="column">
@@ -7,9 +39,27 @@
     <div class="column">
       {{ complaint.attributes.complaint_id }}
     </div>
+
     <div class="column">
       {{ complaint.attributes.date_received }}
     </div>
+
+    <div class="column">
+      {{ complaint.attributes.date_sent_to_company }}
+    </div>
+  
+    <div class="column">
+      {{ complaint.attributes.timely_response }}
+    </div>
+
+    <div class="column">
+      {{ complaint.attributes.consumer_disputed }}
+    </div>
+
+    <div class="column">
+      {{ complaint.attributes.submitted_via }}
+    </div>
+
   </div>
 
 </li>
