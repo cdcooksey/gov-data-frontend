@@ -12,7 +12,7 @@ import { ConsumerComplaint } from '../consumer-complaint';
 })
 export class ConsumerComplaintsComponent implements OnInit {
 
-  complaints$: Observable<ConsumerComplaint[]>;
+  complaints: ConsumerComplaint[];
 
   constructor(private complaintService: ConsumerComplaintService) { }
 
@@ -22,7 +22,7 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   private getComplaints(): void {
     this.complaintService.getComplaints()
-      .subscribe((data: ConsumerComplaint[]) => this.complaints$ = data['data']);
+      .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
   }
 
 
