@@ -35,7 +35,7 @@
   <div class="columns">
     <div class="column" 
       (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
-      {{ complaint.relationships.consumer_complaint_company.data.id }}
+      {{ complaint.attributes.company }}
     </div>
 
     <div class="column">
