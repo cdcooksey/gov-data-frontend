@@ -1,5 +1,9 @@
 <div class="columns">
   <div class="column">
+    <strong>Company</strong>
+  </div>
+
+  <div class="column">
     <strong>complaint ID</strong>
   </div>
 
@@ -28,8 +32,12 @@
 
 <li *ngFor="let complaint of complaints">
 
-
   <div class="columns">
+    <div class="column" 
+      (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
+      {{ complaint.relationships.consumer_complaint_company.data.id }}
+    </div>
+
     <div class="column">
       {{ complaint.attributes.complaint_id }}
     </div>

@@ -21,10 +21,15 @@ export class ConsumerComplaintService {
   constructor(private http: HttpClient) { }
 
   getComplaints() {
-    return this.http.get<ConsumerComplaint[]>(this.complaintsUrl)
+    return this.http.get<ConsumerComplaint[]>(this.complaintsUrl);
   }
 
-	private handleError<T> (operation = 'operation', result?: T) {
+  getComplaintsByCompany(id: string) {
+    let url = `http://gov-api.cooksey.io/v1/consumer-complaint-companies/${id}`;
+    return this.http.get<ConsumerComplaint[]>(url);
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(error);
 			this.log(`${operation} failed: ${error.message}`);

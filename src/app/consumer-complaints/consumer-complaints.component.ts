@@ -20,6 +20,11 @@ export class ConsumerComplaintsComponent implements OnInit {
     this.getComplaints();
   }
 
+  getComplaintsByCompany(id: string) {
+    this.complaintService.getComplaintsByCompany(id)
+      .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+  }
+
   private getComplaints(): void {
     this.complaintService.getComplaints()
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
