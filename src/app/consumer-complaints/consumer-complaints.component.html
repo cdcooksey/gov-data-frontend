@@ -23,10 +23,6 @@
     <strong>ZIP</strong>
   </div>
 
-  <div class="column">
-    <strong>via</strong>
-  </div>
-
 </div>
 
 <li *ngFor="let complaint of complaints">
@@ -57,11 +53,6 @@
       (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
       {{ complaint.attributes.zip_code }}
     </div>
-
-    <div class="column">
-      {{ complaint.attributes.submitted_via }}
-    </div>
-
   </div>
 
 </li>
