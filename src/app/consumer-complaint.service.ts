@@ -29,6 +29,11 @@ export class ConsumerComplaintService {
     return this.http.get<ConsumerComplaint[]>(url);
   }
 
+  getComplaintsByZipCode(id: string) {
+    let url = `http://gov-api.cooksey.io/v1/consumer-complaint-zip-codes/${id}`;
+    return this.http.get<ConsumerComplaint[]>(url);
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(error);
