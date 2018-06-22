@@ -16,7 +16,9 @@ export class ConsumerComplaintsComponent implements OnInit {
   complaints: ConsumerComplaint[];
   zipCodes: ZipCode[];
 
-  constructor(private complaintService: ConsumerComplaintService) { }
+  constructor(private complaintService: ConsumerComplaintService) { 
+    this.resetState();
+  }
 
   ngOnInit() {
     this.getComplaints();
@@ -28,6 +30,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   }
 
   getComplaintsByZipCode(id: string) {
+    this.resetState();
     this.complaintService.getComplaintsByZipCode(id)
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
   }
@@ -46,5 +49,8 @@ export class ConsumerComplaintsComponent implements OnInit {
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
   }
 
+  private resetState() {
+    this.zipCodes = [];
+  }
 
 }
