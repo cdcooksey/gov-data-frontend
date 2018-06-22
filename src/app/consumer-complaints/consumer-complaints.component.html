@@ -53,7 +53,8 @@
       {{ complaint.attributes.subissue }}
     </div>
 
-    <div class="column">
+    <div class="column"
+      (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
       {{ complaint.attributes.zip_code }}
     </div>
 

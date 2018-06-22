@@ -25,6 +25,11 @@ export class ConsumerComplaintsComponent implements OnInit {
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
   }
 
+  getComplaintsByZipCode(id: string) {
+    this.complaintService.getComplaintsByZipCode(id)
+      .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+  }
+
   private getComplaints(): void {
     this.complaintService.getComplaints()
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
