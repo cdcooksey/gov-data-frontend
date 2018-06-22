@@ -8,9 +8,11 @@
 </div>
 
 <span *ngIf="zipCodes.length > 0">
-  <p *ngFor="let zipCode of zipCodes">
-    {{ zipCode.attributes.name }}
-  </p>
+  <ul *ngFor="let zipCode of zipCodes">
+    <li (click)="getComplaintsByZipCode(zipCode.attributes.id)">
+      {{ zipCode.attributes.name }}
+    </li>
+  </ul>
 </span>
 
 <div class="columns">
