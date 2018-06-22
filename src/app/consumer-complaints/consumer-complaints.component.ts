@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ConsumerComplaintService } from '../consumer-complaint.service';
 import { ConsumerComplaint } from '../consumer-complaint';
+import { ZipCode } from '../zip-code';
 
 @Component({
   selector: 'app-consumer-complaints',
@@ -13,6 +14,7 @@ import { ConsumerComplaint } from '../consumer-complaint';
 export class ConsumerComplaintsComponent implements OnInit {
 
   complaints: ConsumerComplaint[];
+  zipCodes: ZipCode[];
 
   constructor(private complaintService: ConsumerComplaintService) { }
 
@@ -28,6 +30,15 @@ export class ConsumerComplaintsComponent implements OnInit {
   getComplaintsByZipCode(id: string) {
     this.complaintService.getComplaintsByZipCode(id)
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+  }
+
+  getZipCodesBySearch(zipCode: string) {
+    if(zipCode.length < 1) {
+      this.zipCodes = [];
+      return this.getComplaints();
+    }
+    this.complaintService.getZipCodesBySearch(zipCode)
+      .subscribe((data: ZipCode[]) => this.zipCodes = data['data']);
   }
 
   private getComplaints(): void {

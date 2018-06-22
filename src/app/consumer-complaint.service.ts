@@ -9,6 +9,7 @@ const httpOptions = {
 }
 
 import { ConsumerComplaint } from './consumer-complaint';
+import { ZipCode } from './zip-code';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,11 @@ export class ConsumerComplaintService {
   getComplaintsByZipCode(id: string) {
     let url = `http://gov-api.cooksey.io/v1/consumer-complaint-zip-codes/${id}`;
     return this.http.get<ConsumerComplaint[]>(url);
+  }
+
+  getZipCodesBySearch(zipCode: string) {
+    let url = `http://gov-api.cooksey.io/v1/consumer-complaint-zip-codes?zip_code=${zipCode}`;
+    return this.http.get<ZipCode[]>(url);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

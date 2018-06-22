@@ -1,4 +1,19 @@
 <div class="columns">
+  <div class="column is-one-fifth is-offset-one-fifth">
+    <div class="notification is-success">
+      <label class="label">ZIP Code</label>
+      <input (keyup)="getZipCodesBySearch($event.target.value)" class="input" type="text" placeholder="90210">
+    </div>
+  </div>
+</div>
+
+<span *ngIf="zipCodes.length > 0">
+  <p *ngFor="let zipCode of zipCodes">
+    {{ zipCode.attributes.name }}
+  </p>
+</span>
+
+<div class="columns">
   <div class="column">
     <strong>Company</strong>
   </div>
@@ -25,9 +40,8 @@
 
 </div>
 
-<li *ngFor="let complaint of complaints">
+<div class="columns" *ngFor="let complaint of complaints">
 
-  <div class="columns">
     <div class="column" 
       (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
       {{ complaint.attributes.company }}
@@ -53,6 +67,5 @@
       (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
       {{ complaint.attributes.zip_code }}
     </div>
-  </div>
 
-</li>
+</div>
