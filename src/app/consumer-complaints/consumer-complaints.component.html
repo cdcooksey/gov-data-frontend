@@ -1,73 +1,78 @@
 <div class="columns">
-  <div class="column is-one-fifth is-offset-one-fifth">
+  <div class="column is-one-fifth">
+
     <div class="notification is-success">
       <label class="label">ZIP Code</label>
       <input (keyup)="getZipCodesBySearch($event.target.value)" class="input" type="text" placeholder="90210">
+      <span *ngIf="zipCodes.length > 0">
+        <ul *ngFor="let zipCode of zipCodes">
+          <li (click)="getComplaintsByZipCode(zipCode.attributes.id)">
+            <strong>{{ zipCode.attributes.name }}</strong>
+          </li>
+        </ul>
+      </span>
+    </div>
+
+  </div>
+
+  <div class="column">
+    <div class="columns">
+      <div class="column">
+        <strong>Company</strong>
+      </div>
+
+      <div class="column">
+        <strong>Product</strong>
+      </div>
+
+      <div class="column">
+        <strong>Subproduct</strong>
+      </div>
+
+      <div class="column">
+        <strong>Issue</strong>
+      </div>
+
+      <div class="column">
+        <strong>Subissue</strong>
+      </div>
+
+      <div class="column">
+        <strong>ZIP</strong>
+      </div>
+
+    </div>
+
+    <div class="columns" *ngFor="let complaint of complaints">
+
+      <div class="column"
+        (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
+        {{ complaint.attributes.company }}
+      </div>
+
+      <div class="column">
+        {{ complaint.attributes.product }}
+      </div>
+
+      <div class="column">
+        {{ complaint.attributes.subproduct }}
+      </div>
+
+      <div class="column">
+        {{ complaint.attributes.issue }}
+      </div>
+
+      <div class="column">
+        {{ complaint.attributes.subissue }}
+      </div>
+
+      <div class="column"
+        (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
+        {{ complaint.attributes.zip_code }}
+      </div>
+
     </div>
   </div>
 </div>
 
-<span *ngIf="zipCodes.length > 0">
-  <ul *ngFor="let zipCode of zipCodes">
-    <li (click)="getComplaintsByZipCode(zipCode.attributes.id)">
-      {{ zipCode.attributes.name }}
-    </li>
-  </ul>
-</span>
 
-<div class="columns">
-  <div class="column">
-    <strong>Company</strong>
-  </div>
-
-  <div class="column">
-    <strong>Product</strong>
-  </div>
-
-  <div class="column">
-    <strong>Subproduct</strong>
-  </div>
-
-  <div class="column">
-    <strong>Issue</strong>
-  </div>
-
-  <div class="column">
-    <strong>Subissue</strong>
-  </div>
-
-  <div class="column">
-    <strong>ZIP</strong>
-  </div>
-
-</div>
-
-<div class="columns" *ngFor="let complaint of complaints">
-
-    <div class="column" 
-      (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
-      {{ complaint.attributes.company }}
-    </div>
-
-    <div class="column">
-      {{ complaint.attributes.product }}
-    </div>
-
-    <div class="column">
-      {{ complaint.attributes.subproduct }}
-    </div>
-
-    <div class="column">
-      {{ complaint.attributes.issue }}
-    </div>
-  
-    <div class="column">
-      {{ complaint.attributes.subissue }}
-    </div>
-
-    <div class="column"
-      (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
-      {{ complaint.attributes.zip_code }}
-    </div>
-
-</div>
