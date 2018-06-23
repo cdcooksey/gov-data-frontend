@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ConsumerComplaintService } from '../consumer-complaint.service';
 import { ConsumerComplaint } from '../consumer-complaint';
 import { ZipCode } from '../zip-code';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-consumer-complaints',
@@ -15,6 +16,7 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   complaints: ConsumerComplaint[];
   zipCodes: ZipCode[];
+  companies: Company[];
 
   constructor(private complaintService: ConsumerComplaintService) { 
     this.resetState();
@@ -25,6 +27,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   }
 
   getComplaintsByCompany(id: string) {
+    this.resetState();
     this.complaintService.getComplaintsByCompany(id)
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
   }
@@ -44,6 +47,15 @@ export class ConsumerComplaintsComponent implements OnInit {
       .subscribe((data: ZipCode[]) => this.zipCodes = data['data']);
   }
 
+  getCompaniesBySearch(name: string) {
+    if(name.length < 1) {
+      this.companies = [];
+      return this.getComplaints();
+    }
+    this.complaintService.getCompaniesBySearch(name)
+      .subscribe((data: Company[]) => this.companies= data['data']);
+  } 
+
   private getComplaints(): void {
     this.complaintService.getComplaints()
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
@@ -51,6 +63,7 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   private resetState() {
     this.zipCodes = [];
+    this.companies = [];
   }
 
 }

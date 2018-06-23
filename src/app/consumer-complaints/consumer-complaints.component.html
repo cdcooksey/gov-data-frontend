@@ -1,7 +1,9 @@
 <div class="columns">
-  <div class="column is-one-fifth">
 
+  <!-- start side bar -->
+  <div class="column is-one-fifth">
     <div class="notification is-success">
+
       <label class="label">ZIP Code</label>
       <input (keyup)="getZipCodesBySearch($event.target.value)" class="input" type="text" placeholder="90210">
       <span *ngIf="zipCodes.length > 0">
@@ -11,10 +13,22 @@
           </li>
         </ul>
       </span>
-    </div>
 
+
+      <label class="label">Company</label>
+      <input (keyup)="getCompaniesBySearch($event.target.value)" class="input" type="text" placeholder="Jerk, INC">
+      <span *ngIf="companies.length > 0">
+        <ul *ngFor="let company of companies">
+          <li (click)="getComplaintsByCompany(company.attributes.id)">
+            <strong>{{ company.attributes.name }}</strong>
+          </li>
+        </ul>
+      </span>
+
+    </div>
   </div>
 
+  <!-- start main content -->
   <div class="column">
     <div class="columns">
       <div class="column">
