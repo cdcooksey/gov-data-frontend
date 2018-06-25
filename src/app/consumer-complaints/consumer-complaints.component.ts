@@ -31,9 +31,15 @@ export class ConsumerComplaintsComponent implements OnInit {
    * # TODO: Pass in ConsumerComplaint model
    * id: string ConsumerComplaint.id
    */
-  expandComplaint(id: string) {
-    this.expandedComplaint = id;
-    console.log(`expand() got ${id}`);
+  toggleExpandComplaint(id: string) {
+    if(this.expandedComplaint == id) {
+      // unasign, they've double clicked
+      return this.expandedComplaint = '';
+    }
+    else {
+      // assign to expand details
+      return this.expandedComplaint = id;
+    }
   }
 
   getComplaintsByCompany(id: string) {
