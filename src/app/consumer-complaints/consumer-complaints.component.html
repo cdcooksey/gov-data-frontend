@@ -93,38 +93,41 @@
       </div>
 
       <span *ngIf="expandedComplaint.length > 0">
-        <div class="columns">
+        <div class="notification is-success">
 
-          <div class="column">
-            <strong>Complaint ID</strong>
-            {{ complaint.attributes.complaint_id }}
+          <div class="columns">
+
+            <div class="column is-success">
+              <strong>Complaint ID</strong>
+              {{ complaint.attributes.complaint_id }}
+            </div>
+
+            <div class="column">
+              <strong>Date Received</strong>
+              {{ complaint.attributes.date_received }}
+            </div>
+
+            <div class="column">
+              <strong>Date received by company</strong>
+              {{ complaint.attributes.date_received_by_company }}
+            </div>
+
+            <div class="column">
+              <strong>Timely response</strong>
+              {{ complaint.attributes.timely_response }}
+            </div>
+
+            <div class="column">
+              <strong>Consumer disputed</strong>
+              {{ complaint.attributes.consumer_disputed }}
+            </div>
+
+            <div class="column">
+              <strong>Submitted Via</strong>
+              {{ complaint.attributes.submitted_via }}
+            </div>
+
           </div>
-
-          <div class="column">
-            <strong>Date Received</strong>
-            {{ complaint.attributes.date_received }}
-          </div>
-
-          <div class="column">
-            <strong>Date received by company</strong>
-            {{ complaint.attributes.date_received_by_company }}
-          </div>
-
-          <div class="column">
-            <strong>Timely response</strong>
-            {{ complaint.attributes.timely_response }}
-          </div>
-
-          <div class="column">
-            <strong>Consumer disputed</strong>
-            {{ complaint.attributes.consumer_disputed }}
-          </div>
-
-          <div class="column">
-            <strong>Submitted Via</strong>
-            {{ complaint.attributes.submitted_via }}
-          </div>
-
         </div>
       </span>
 
