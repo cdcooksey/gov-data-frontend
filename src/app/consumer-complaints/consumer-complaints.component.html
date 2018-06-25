@@ -94,50 +94,56 @@
 
       <span *ngIf="expandedComplaint.length > 0 && expandedComplaint == complaint.id">
 
-        <article class="message is-success">
-          <div class="message-header">
-            <p>Details</p>
-            <button (click)="toggleExpandComplaint(complaint.id)" class="delete" aria-label="delete"></button>
+        <div class="columns">
+          <div class="column is-6 is-offset-4">
+
+            <article class="message is-success">
+              <div class="message-header">
+                <p>Details</p>
+                <button (click)="toggleExpandComplaint(complaint.id)" class="delete" aria-label="delete"></button>
+              </div>
+
+              <div class="message-body">
+
+                <div class="columns">
+                  <div class="column">
+                    <strong>Complaint ID</strong>
+                    {{ complaint.attributes.complaint_id }}
+                  </div>
+
+                  <div class="column">
+                    <strong>Date Received</strong>
+                    {{ complaint.attributes.date_received }}
+                  </div>
+
+                  <div class="column">
+                    <strong>Date received by company</strong>
+                    {{ complaint.attributes.date_received_by_company }}
+                  </div>
+                </div>
+
+                <div class="columns">
+                  <div class="column">
+                    <strong>Timely response</strong>
+                    {{ complaint.attributes.timely_response }}
+                  </div>
+
+                  <div class="column">
+                    <strong>Consumer disputed</strong>
+                    {{ complaint.attributes.consumer_disputed }}
+                  </div>
+
+                  <div class="column">
+                    <strong>Submitted Via</strong>
+                    {{ complaint.attributes.submitted_via }}
+                  </div>
+                </div>
+              </div>
+            </article>
+
           </div>
-
-          <div class="message-body">
-
-            <div class="columns">
-              <div class="column">
-                <strong>Complaint ID</strong>
-                {{ complaint.attributes.complaint_id }}
-              </div>
-
-              <div class="column">
-                <strong>Date Received</strong>
-                {{ complaint.attributes.date_received }}
-              </div>
-
-              <div class="column">
-                <strong>Date received by company</strong>
-                {{ complaint.attributes.date_received_by_company }}
-              </div>
-            </div>
-
-            <div class="columns">
-              <div class="column">
-                <strong>Timely response</strong>
-                {{ complaint.attributes.timely_response }}
-              </div>
-
-              <div class="column">
-                <strong>Consumer disputed</strong>
-                {{ complaint.attributes.consumer_disputed }}
-              </div>
-
-              <div class="column">
-                <strong>Submitted Via</strong>
-                {{ complaint.attributes.submitted_via }}
-              </div>
-            </div>
-          </div>
-        </article>
-
+          <div class="column is-2"></div>
+        </div>
       </span>
 
     </span> <!-- loop container -->
