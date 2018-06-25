@@ -17,6 +17,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   complaints: ConsumerComplaint[];
   zipCodes: ZipCode[];
   companies: Company[];
+  expandedComplaint: string; // TODO: Type as ConsumerComplaint model
 
   constructor(private complaintService: ConsumerComplaintService) { 
     this.resetState();
@@ -24,6 +25,15 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   ngOnInit() {
     this.getComplaints();
+  }
+
+  /**
+   * # TODO: Pass in ConsumerComplaint model
+   * id: string ConsumerComplaint.id
+   */
+  expandComplaint(id: string) {
+    this.expandedComplaint = id;
+    console.log(`expand() got ${id}`);
   }
 
   getComplaintsByCompany(id: string) {
@@ -64,6 +74,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   private resetState() {
     this.zipCodes = [];
     this.companies = [];
+    this.expandedComplaint = ''; // TODO Type as ConsumerComplaint model
   }
 
 }

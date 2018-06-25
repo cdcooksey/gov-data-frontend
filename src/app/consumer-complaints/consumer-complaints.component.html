@@ -57,35 +57,79 @@
 
     </div>
 
-    <div class="columns" *ngFor="let complaint of complaints">
+    <span *ngFor="let complaint of complaints">
 
-      <div class="column"
-        (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
-        {{ complaint.attributes.company }}
+      <div class="columns">
+
+        <div class="column"
+          (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
+          {{ complaint.attributes.company }}
+        </div>
+
+        <div class="column">
+          <span (click)="expandComplaint(complaint.id)">
+            {{ complaint.attributes.product }}
+          </span>
+        </div>
+
+        <div class="column">
+          {{ complaint.attributes.subproduct }}
+        </div>
+
+        <div class="column">
+          {{ complaint.attributes.issue }}
+        </div>
+
+        <div class="column">
+          {{ complaint.attributes.subissue }}
+        </div>
+
+        <div class="column"
+          (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
+          {{ complaint.attributes.zip_code }}
+        </div>
+
+
       </div>
 
-      <div class="column">
-        {{ complaint.attributes.product }}
-      </div>
+      <span *ngIf="expandedComplaint.length > 0">
+        <div class="columns">
 
-      <div class="column">
-        {{ complaint.attributes.subproduct }}
-      </div>
+          <div class="column">
+            <strong>Complaint ID</strong>
+            {{ complaint.attributes.complaint_id }}
+          </div>
 
-      <div class="column">
-        {{ complaint.attributes.issue }}
-      </div>
+          <div class="column">
+            <strong>Date Received</strong>
+            {{ complaint.attributes.date_received }}
+          </div>
 
-      <div class="column">
-        {{ complaint.attributes.subissue }}
-      </div>
+          <div class="column">
+            <strong>Date received by company</strong>
+            {{ complaint.attributes.date_received_by_company }}
+          </div>
 
-      <div class="column"
-        (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
-        {{ complaint.attributes.zip_code }}
-      </div>
+          <div class="column">
+            <strong>Timely response</strong>
+            {{ complaint.attributes.timely_response }}
+          </div>
 
-    </div>
+          <div class="column">
+            <strong>Consumer disputed</strong>
+            {{ complaint.attributes.consumer_disputed }}
+          </div>
+
+          <div class="column">
+            <strong>Submitted Via</strong>
+            {{ complaint.attributes.submitted_via }}
+          </div>
+
+        </div>
+      </span>
+
+    </span> <!-- loop container -->
+
   </div>
 </div>
 
