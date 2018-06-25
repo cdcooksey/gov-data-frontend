@@ -92,12 +92,11 @@
 
       </div>
 
-      <span *ngIf="expandedComplaint.length > 0">
+      <span *ngIf="expandedComplaint.length > 0 && expandedComplaint == complaint.id">
         <div class="notification is-success">
 
           <div class="columns">
-
-            <div class="column is-success">
+            <div class="column">
               <strong>Complaint ID</strong>
               {{ complaint.attributes.complaint_id }}
             </div>
@@ -111,7 +110,9 @@
               <strong>Date received by company</strong>
               {{ complaint.attributes.date_received_by_company }}
             </div>
+          </div>
 
+          <div class="columns">
             <div class="column">
               <strong>Timely response</strong>
               {{ complaint.attributes.timely_response }}
@@ -126,8 +127,8 @@
               <strong>Submitted Via</strong>
               {{ complaint.attributes.submitted_via }}
             </div>
-
           </div>
+
         </div>
       </span>
 
