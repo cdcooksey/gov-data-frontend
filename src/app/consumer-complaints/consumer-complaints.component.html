@@ -63,12 +63,12 @@
 
         <div class="column"
           (click)="getComplaintsByCompany(complaint.relationships.consumer_complaint_company.data.id)">
-          {{ complaint.attributes.company }}
+          <a>{{ complaint.attributes.company }}</a>
         </div>
 
         <div class="column">
           <span (click)="toggleExpandComplaint(complaint.id)">
-            {{ complaint.attributes.product }}
+            <a>{{ complaint.attributes.product }}</a>
           </span>
         </div>
 
@@ -86,7 +86,7 @@
 
         <div class="column"
           (click)="getComplaintsByZipCode(complaint.relationships.consumer_complaint_zip_code.data.id)">
-          {{ complaint.attributes.zip_code }}
+          <a>{{ complaint.attributes.zip_code }}</a>
         </div>
 
 
