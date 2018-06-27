@@ -68,20 +68,26 @@
 
         <div class="column">
           <span (click)="toggleExpandComplaint(complaint.id)">
-            <a>{{ complaint.attributes.product }}</a>
+            {{ complaint.attributes.product }}
           </span>
         </div>
 
         <div class="column">
-          {{ complaint.attributes.subproduct }}
+          <span (click)="toggleExpandComplaint(complaint.id)">
+            {{ complaint.attributes.subproduct }}
+          </span>
         </div>
 
         <div class="column">
-          {{ complaint.attributes.issue }}
+          <span (click)="toggleExpandComplaint(complaint.id)">
+            {{ complaint.attributes.issue }}
+          </span>
         </div>
 
         <div class="column">
-          {{ complaint.attributes.subissue }}
+          <span (click)="toggleExpandComplaint(complaint.id)">
+            {{ complaint.attributes.subissue }}
+          </span>
         </div>
 
         <div class="column"
@@ -138,6 +144,25 @@
                     {{ complaint.attributes.submitted_via }}
                   </div>
                 </div>
+
+                <div class="columns">
+                  <div class="column">
+                    <strong>Consumer narrative</strong>
+                  </div>
+                  <div class="column">
+                    {{ complaint.attributes.consumer_complaint_narrative }}
+                  </div>
+                </div>
+
+                <div class="columns">
+                  <div class="column">
+                    <strong>Commpany public response</strong>
+                  </div>
+                  <div class="column">
+                    {{ complaint.attributes.company_public_response }}
+                  </div>
+                </div>
+
               </div>
             </article>
 
