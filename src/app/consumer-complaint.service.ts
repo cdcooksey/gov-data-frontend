@@ -22,8 +22,9 @@ export class ConsumerComplaintService {
 
   constructor(private http: HttpClient) { }
 
-  getComplaints() {
-    return this.http.get<ConsumerComplaint[]>(this.complaintsUrl);
+  getComplaints(page: number) {
+    let url = `${this.complaintsUrl}?page=${page}`;
+    return this.http.get<ConsumerComplaint[]>(url);
   }
 
   getComplaintsByCompany(id: string) {

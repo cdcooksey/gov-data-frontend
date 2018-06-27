@@ -18,6 +18,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   zipCodes: ZipCode[];
   companies: Company[];
   expandedComplaint: string; // TODO: Type as ConsumerComplaint model
+  pageNumber: number;
 
   constructor(private complaintService: ConsumerComplaintService) { 
     this.resetState();
@@ -28,7 +29,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   }
 
   /**
-   * # TODO: Pass in ConsumerComplaint model
+   * TODO: Pass in ConsumerComplaint model
    * id: string ConsumerComplaint.id
    */
   toggleExpandComplaint(id: string) {
@@ -72,15 +73,29 @@ export class ConsumerComplaintsComponent implements OnInit {
       .subscribe((data: Company[]) => this.companies= data['data']);
   } 
 
-  private getComplaints(): void {
-    this.complaintService.getComplaints()
+  getComplaints(): void {
+    this.complaintService.getComplaints(this.pageNumber)
       .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+  }
+
+  previousPage() {
+    this.pageNumber = this.pageNumber - 1;
+    if(this.pageNumber < 1) {
+      this.pageNumber = 0;
+    }
+    this.getComplaints();
+  }
+
+  nextPage() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getComplaints();
   }
 
   private resetState() {
     this.zipCodes = [];
     this.companies = [];
     this.expandedComplaint = ''; // TODO Type as ConsumerComplaint model
+    this.pageNumber = 0;
   }
 
 }
