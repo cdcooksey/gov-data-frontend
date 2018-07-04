@@ -50,7 +50,7 @@ export class ConsumerComplaintsComponent implements OnInit {
       for(let complaint of data['data']) {
         this.complaints.push(complaint]); 
       }
-    }
+    });
   }
 
   getComplaintsByZipCode(id: string) {
@@ -60,7 +60,7 @@ export class ConsumerComplaintsComponent implements OnInit {
       for(let complaint of data['data']) {
         this.complaints.push(complaint]); 
       }
-    }
+    });
   }
 
   getZipCodesBySearch(zipCode: string) {
@@ -82,11 +82,12 @@ export class ConsumerComplaintsComponent implements OnInit {
   } 
 
   getComplaints(): void {
-    this.complaintService.getComplaints(this.pageNumber).subscribe((data: ConsumerComplaint[]) => { 
-      for(let complaint of data['data']) {
-        this.complaints.push(complaint]); 
-      }
-    });
+    this.complaintService.getComplaints(this.pageNumber)
+      .subscribe((data: ConsumerComplaint[]) => { 
+        for(let complaint of data['data']) {
+          this.complaints.push(complaint]); 
+        }
+      });
   }
 
   hasComplaints() {
