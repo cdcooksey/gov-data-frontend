@@ -46,14 +46,21 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   getComplaintsByCompany(id: string) {
     this.resetState();
-    this.complaintService.getComplaintsByCompany(id)
-      .subscribe((data: ConsumerComplaint[]) => this.complaints.push(data['data']));
+    this.complaintService.getComplaintsByCompany(id).subscribe((data: ConsumerComplaint[]) => { 
+      for(let complaint of data['data']) {
+        this.complaints.push(complaint]); 
+      }
+    }
   }
 
   getComplaintsByZipCode(id: string) {
     this.resetState();
-    this.complaintService.getComplaintsByZipCode(id)
-      .subscribe((data: ConsumerComplaint[]) => this.complaints.push(data['data']));
+
+    this.complaintService.getComplaintsByZipCode(id).subscribe((data: ConsumerComplaint[]) => { 
+      for(let complaint of data['data']) {
+        this.complaints.push(complaint]); 
+      }
+    }
   }
 
   getZipCodesBySearch(zipCode: string) {
@@ -76,14 +83,10 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   getComplaints(): void {
     this.complaintService.getComplaints(this.pageNumber).subscribe((data: ConsumerComplaint[]) => { 
-      console.log('test');
       for(let complaint of data['data']) {
-        console.log('test1');
         this.complaints.push(complaint]); 
       }
-
-      console.log(this.complaints);
-    }
+    });
   }
 
   hasComplaints() {
@@ -102,6 +105,7 @@ export class ConsumerComplaintsComponent implements OnInit {
     this.companies = [];
     this.expandedComplaint = ''; // TODO Type as ConsumerComplaint model
     this.pageNumber = 0;
+    this.complaints = [];
   }
 
 }
