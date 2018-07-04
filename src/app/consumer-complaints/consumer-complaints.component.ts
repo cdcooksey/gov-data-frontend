@@ -90,14 +90,12 @@ export class ConsumerComplaintsComponent implements OnInit {
   }
 
   hasComplaints() {
-    console.log('hasCOmplaints() called');
     return this.complaints.length > 0;
   }
 
   nextPage() {
     this.pageNumber = this.pageNumber + 1;
     this.getComplaints();
-    console.log('nextPage() called');
   }
 
   private resetState() {
