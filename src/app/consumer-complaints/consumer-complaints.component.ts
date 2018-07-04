@@ -21,6 +21,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   pageNumber: number;
 
   constructor(private complaintService: ConsumerComplaintService) { 
+    this.complaints = [];
     this.resetState();
   }
 
@@ -46,13 +47,13 @@ export class ConsumerComplaintsComponent implements OnInit {
   getComplaintsByCompany(id: string) {
     this.resetState();
     this.complaintService.getComplaintsByCompany(id)
-      .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+      .subscribe((data: ConsumerComplaint[]) => this.complaints.push(data['data']));
   }
 
   getComplaintsByZipCode(id: string) {
     this.resetState();
     this.complaintService.getComplaintsByZipCode(id)
-      .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+      .subscribe((data: ConsumerComplaint[]) => this.complaints.push(data['data']));
   }
 
   getZipCodesBySearch(zipCode: string) {
@@ -74,21 +75,26 @@ export class ConsumerComplaintsComponent implements OnInit {
   } 
 
   getComplaints(): void {
-    this.complaintService.getComplaints(this.pageNumber)
-      .subscribe((data: ConsumerComplaint[]) => this.complaints = data['data']);
+    this.complaintService.getComplaints(this.pageNumber).subscribe((data: ConsumerComplaint[]) => { 
+      console.log('test');
+      for(let complaint of data['data']) {
+        console.log('test1');
+        this.complaints.push(complaint]); 
+      }
+
+      console.log(this.complaints);
+    }
   }
 
-  previousPage() {
-    this.pageNumber = this.pageNumber - 1;
-    if(this.pageNumber < 1) {
-      this.pageNumber = 0;
-    }
-    this.getComplaints();
+  hasComplaints() {
+    console.log('hasCOmplaints() called');
+    return this.complaints.length > 0;
   }
 
   nextPage() {
     this.pageNumber = this.pageNumber + 1;
     this.getComplaints();
+    console.log('nextPage() called');
   }
 
   private resetState() {
