@@ -46,21 +46,12 @@ export class ConsumerComplaintsComponent implements OnInit {
 
   getComplaintsByCompany(id: string) {
     this.resetState();
-    this.complaintService.getComplaintsByCompany(id).subscribe((data: ConsumerComplaint[]) => { 
-      for(let complaint of data['data']) {
-        this.complaints.push(complaint]); 
-      }
-    });
+    this.complaintService.getComplaintsByCompany(id).subscribe((data: ConsumerComplaint[]) => this.addToComplaintsArrayList(data));
   }
 
   getComplaintsByZipCode(id: string) {
     this.resetState();
-
-    this.complaintService.getComplaintsByZipCode(id).subscribe((data: ConsumerComplaint[]) => { 
-      for(let complaint of data['data']) {
-        this.complaints.push(complaint]); 
-      }
-    });
+    this.complaintService.getComplaintsByZipCode(id).subscribe((data: ConsumerComplaint[]) => this.addToComplaintsArrayList(data));
   }
 
   getZipCodesBySearch(zipCode: string) {
@@ -82,12 +73,7 @@ export class ConsumerComplaintsComponent implements OnInit {
   } 
 
   getComplaints(): void {
-    this.complaintService.getComplaints(this.pageNumber)
-      .subscribe((data: ConsumerComplaint[]) => { 
-        for(let complaint of data['data']) {
-          this.complaints.push(complaint]); 
-        }
-      });
+    this.complaintService.getComplaints(this.pageNumber).subscribe((data: ConsumerComplaint[]) => this.addToComplaintsArrayList(data));
   }
 
   hasComplaints() {
@@ -105,6 +91,12 @@ export class ConsumerComplaintsComponent implements OnInit {
     this.expandedComplaint = ''; // TODO Type as ConsumerComplaint model
     this.pageNumber = 0;
     this.complaints = [];
+  }
+
+  private addToComplaintsArrayList(data: ConsumerComplaint[]) {
+    for(let complaint of data['data']) {
+      this.complaints.push(complaint); 
+    }
   }
 
 }
