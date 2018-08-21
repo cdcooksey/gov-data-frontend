@@ -100,13 +100,12 @@
         </div>
 
         <span *ngIf="expandedComplaint.length > 0 && expandedComplaint == complaint.id">
-
           <div class="columns">
-            <div class="column is-6 is-offset-4">
+            <div class="column is-12">
 
               <article class="message is-success">
                 <div class="message-header">
-                  <p>Details</p>
+                  <p>{{ complaint.attributes.company }} complaint details</p>
                   <button (click)="toggleExpandComplaint(complaint.id)" class="delete" aria-label="delete"></button>
                 </div>
 
@@ -168,8 +167,10 @@
               </article>
 
             </div>
-            <div class="column is-2"></div>
           </div>
+          <br />
+          <br />
+          <br />
         </span>
 
       </span> <!-- loop container -->
